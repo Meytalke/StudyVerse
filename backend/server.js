@@ -30,7 +30,7 @@ const app = express();
 const server = http.createServer(app); // Create HTTP server from Express app, for Socket.IO
 
 // CORS Configuration 
-const frontendUrl = config.FRONTEND_URL || 'http://localhost:3000';
+const frontendUrl = config.FRONTEND_URL;
 const allowedOrigins = [
     frontendUrl,
     'http://localhost:3000',
@@ -71,7 +71,7 @@ cloudinary.config({
 });
 
 // MongoDB Connection
-const mongoUri = config.MONGODB_URI || 'mongodb+srv://meytalkeren:WPsdx4yNDj3Q5mmX@cluster0.pbismbk.mongodb.net/StudyVerse?retryWrites=true&w=majority&appName=Cluster0';
+const mongoUri = config.MONGODB_UR;
 mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('[MongoDB] Connected to MongoDB successfully'))
     .catch(err => console.error('[MongoDB] Could not connect to MongoDB:', err));
@@ -295,7 +295,7 @@ io.on('connection', socket => {
         console.log(`  Client requested chat: ${conversationId}`);
         console.log(`  Messages to mark:`, messageIds);
         console.log(`  User making request (from socket auth - EXTERNAL ID): ${externalUserId}`);
-        console.log(`  Found and Parsed currentUserInternalId (ObjectId): ${currentUserInternalObjectId}`); // הצג את ה-ID הפנימי שנמצא
+        console.log(`  Found and Parsed currentUserInternalId (ObjectId): ${currentUserInternalObjectId}`);
         console.log(`  Parsed conversationId (ObjectId): ${convObjectId}`);
         console.log(`  Parsed messageIds (ObjectIds):`, messageObjectIds);
 
